@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EA343247-8BB0-49A7-99CF-04EC2E36BD33}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SNHardcorePlus</RootNamespace>
+    <AssemblyName>SNHardcorePlus</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony-1.2.0.1, Version=1.2.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\0Harmony-1.2.0.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="QModInstaller">
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\QModInstaller.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\..\..\..\..\Program Files\Epic Games\Subnautica\Subnautica_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HCPIngredient.cs" />
+    <Compile Include="HCPIngredients.cs" />
+    <Compile Include="HCPSettings.cs" />
+    <Compile Include="HCPTechData.cs" />
+    <Compile Include="Patches\CraftData_Get_Patch.cs" />
+    <Compile Include="Patches\CrafterLogic_ConsumeEnergy_Patch.cs" />
+    <Compile Include="Patches\EnergyMixin_ConsumeEnergy_Patch.cs" />
+    <Compile Include="Patches\GrowingPlant_GetGrowthDuration_Patch.cs" />
+    <Compile Include="HCPHelper.cs" />
+    <Compile Include="Patches\MapRoomFunctionality_UpdateScanning_Patch.cs" />
+    <Compile Include="Patches\SubControl_Update_Patch.cs" />
+    <Compile Include="Patches\SubRoot_Start_Patch.cs" />
+    <Compile Include="QPatcher.cs" />
+    <Compile Include="Patches\DamageSystem_CalculateDamage_Patch.cs" />
+    <Compile Include="Patches\DayNightCycle_Update_Patch.cs" />
+    <Compile Include="Patches\EnergyInterface_ConsumeEnergy_Patch.cs" />
+    <Compile Include="Patches\Oxygen_RemoveOxygen_Patch.cs" />
+    <Compile Include="Patches\Player_OnTakeDamage_Patch.cs" />
+    <Compile Include="Patches\Survival_Eat_Patch.cs" />
+    <Compile Include="Patches\Survival_OnHealTempDamage_Patch.cs" />
+    <Compile Include="Patches\Survival_Reset_Patch.cs" />
+    <Compile Include="Patches\Survival_UpdateHunger_Patch.cs" />
+    <Compile Include="Patches\Survival_UpdateStats_Patch.cs" />
+    <Compile Include="Patches\Survival_Use_Patch.cs" />
+    <Compile Include="Patches\uGUI_FoodBar_Patch.cs" />
+    <Compile Include="Patches\uGUI_WaterBar_Patch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
