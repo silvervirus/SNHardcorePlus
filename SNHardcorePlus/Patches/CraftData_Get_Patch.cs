@@ -1,6 +1,5 @@
 ﻿using Harmony;
-using System;
-using System.Reflection;
+using SMLHelper.V2.Crafting;
 
 namespace SNHardcorePlus.Patches
 {
@@ -8,17 +7,20 @@ namespace SNHardcorePlus.Patches
     [HarmonyPatch("Get")]
     class CraftData_Get_Patch
     {
-        public static readonly Type TechDataType = typeof(CraftData).GetNestedType("TechData", BindingFlags.NonPublic);
-
-        public static void Postfix(ref ITechData __result, ref TechType techType)
+        public static void Postfix(ref ITechData __result)
         {
-            var patchedTech = HCPTechData.GetFromTechData(__result);
+            var patchedTech = new TechData() { craftAmount = __result.craftAmount };
 
-            for (int i = 0; i < patchedTech.ingredientCount; i++)
+            for (int i = 0; i < __result.ingredientCount; i++)
             {
-                var ingredientTechType = patchedTech._ingredients[i].techType;
-                var patchedIngredientAmount = patchedTech._ingredients[i].amount * HCPSettings.Instance.CraftingCostMultiplier;
-                patchedTech._ingredients[i] = new HCPIngredient(ingredientTechType, patchedIngredientAmount);
+                IIngredient ingredient = __result.GetIngredient(i);
+                Ingredient patchedIngredient = new Ingredient(ingredient.techType, ingredient.amount*HCPSettings.Instance.CraftingCostMultiplier);
+                patchedTech.Ingredients.Add(patchedIngredient);
+            }
+
+            for (int i = 0; i < __result.ingredientCount; i++)
+            {
+                patchedTech.LinkedItems.Add(__result.GetLinkedItem(i));
             }
 
             __result = patchedTech;

@@ -1,1 +1,11 @@
-{"Id":"snhardcoreplus.mod","DisplayName":"Subnautica Hardcore Plus","Author":"Qwiso","Version":"1.0.0","Requires":[],"Enable":true,"AssemblyName":"SNHardcorePlus.dll","EntryMethod":"SNHardcorePlus.QPatch.Patch","Config":{}}
+{
+  "Id": "snhardcoreplus.mod",
+  "DisplayName": "Subnautica Hardcore Plus",
+  "Author": "Qwiso",
+  "Version": "1.0.1",
+  "Dependencies": [ "SMLHelper" ],
+  "Enable": true,
+  "Game": "Subnautica",
+  "AssemblyName": "SNHardcorePlus.dll",
+  "Config": {}
+}
